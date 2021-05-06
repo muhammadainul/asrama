@@ -1,0 +1,58 @@
+<div class="card">
+    <div class="card-header">
+        <i class="fa fa-h-square"></i> <strong class="card-title">Data Reservasi</strong>
+    </div>
+    <div class="card-body">
+        <a class="btn btn-outline-info" href="/reservasi/tambah"><i class="fa fa-plus"></i> <i class="fa fa-h-square"></i> Tambah Reservasi</a>
+        <p></p>
+        <div class="row form-group">
+            <div class="col-3">
+                <label for="startDate" class="form-control-label">Asrama</label>
+                <select name="id_asrama" id="idAsrama" class="form-control">
+                    <option value="">Asrama</option>
+                    <% asrama.forEach(row => { %>
+                        <option value="<%= row.id %>"><%= row.nama_asrama %></option>
+                    <% }) %>
+                </select>
+            </div>
+            <div class="col-6">
+                <label for="startDate" class="form-control-label">Tanggal <i>Check-In</i></label>
+                <div id="searchByDate" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                    <i class="fa fa-calendar"></i>&nbsp;
+                    <span id="dateSpan"></span> <i class="fa fa-caret-down"></i>
+                </div>
+            </div>
+            <div class="col-3">
+                <label for="Status" class="form-control-label">Status</label>
+                <select name="status" id="status" class="form-control">
+                    <option value="">Status</option>
+                    <option value="1">Booked</option>
+                    <option value="2">Checkin</option>
+                    <option value="3">Checkout</option>
+                </select>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-3">
+                <button style="padding: 5px 20px; margin-top: 10px;" class="btn btn-outline-primary" id="buttonFilterReservasi">
+                <i class="fa fa-search"></i> Filter</button>
+            </div>
+        </div>
+        <table id="dataTableReservasi" class="table table-striped table-bordered table-hover text-sm" style="width: 100%;">
+            <thead>
+                <tr role="row">
+                    <th>No</th>
+                    <th>Nama Lengkap</th>
+                    <th>NIK</th>
+                    <th>NIP</th>
+                    <th>Keterangan</th>
+                    <th>Tanggal Reservasi</th>
+                    <th>Tanggal Cek-In</th>
+                    <th>Tanggal Cek-Out</th>
+                    <th>Status</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>

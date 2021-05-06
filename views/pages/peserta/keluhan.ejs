@@ -1,0 +1,80 @@
+<%- include('../../navigation/navbar-user') %>
+
+<!-- Portfolio Section-->
+<div class="page-section mt-5">
+    <div class="container">
+        <!-- Portfolio Section Heading-->
+        <h2 class="page-section-heading text-center text-secondary mb-0">Keluhan Kamar</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-comments"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <form action="/keluhan/tambah" method="post">
+                    <% if (session.data.id_kamar != null) { %>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="disabled-input" class=" form-control-label">Nama</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input class="form-control" value="<%= typeof nama != 'undefined' ? nama : '' %>" id="name" name="nama" type="text" placeholder="Masukkan nama anda.." required="required" data-validation-required-message="Masukkan nama anda.." />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="disabled-input" class=" form-control-label">Keluhan</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <textarea rows="10" class="form-control" value="<%= typeof keluhan != 'undefined' ? keluhan : '' %>" name="keluhan" placeholder="Masukkan keluhan anda.." required="required" data-validation-required-message="Masukkan keluhan anda.">
+                                    <%= typeof keluhan != 'undefined' ? keluhan : '' %>
+                                </textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" name="browser" id="browser" value="">
+                            <input type="hidden" name="browser_version" id="browser_version" value="">
+                            <input type="hidden" name="os" id="os" value="">
+                            <button type="submit" class="btn btn-primary openActionAddKeluhan"><i class="fa fa-save"></i> Simpan</button>
+                            <button type="reset" class="btn btn-danger"><i class="fa fa-ban"></i> Reset</button>
+                        </div>
+                    <% } else { %>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="disabled-input" class=" form-control-label">Nama</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input disabled class="form-control" value="<%= typeof nama != 'undefined' ? nama : '' %>" id="name" name="nama" type="text" placeholder="Masukkan nama anda.." required="required" data-validation-required-message="Masukkan nama anda.." />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="disabled-input" class=" form-control-label">Keluhan</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <textarea disabled rows="10" class="form-control" value="<%= typeof keluhan != 'undefined' ? keluhan : '' %>" id="keluhan" name="keluhan" type="text" placeholder="Masukkan keluhan anda.." required="required" data-validation-required-message="Masukkan keluhan anda.">
+                                    <%= typeof keluhan != 'undefined' ? keluhan : '' %>
+                                </textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" name="browser" id="browser" value="">
+                            <input type="hidden" name="browser_version" id="browser_version" value="">
+                            <input type="hidden" name="os" id="os" value="">
+                            <button disabled type="submit" class="btn btn-primary disabled"><i class="fa fa-save"></i> Simpan</button>
+                            <button disabled type="reset" class="btn btn-danger disabled"><i class="fa fa-ban"></i> Reset</button>
+                        </div>
+                    <% } %>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../../footer/footer-user') %>

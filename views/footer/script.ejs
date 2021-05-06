@@ -1,0 +1,36 @@
+    <!-- Bootstrap core JS-->
+    <script src="/new/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="/new/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/new/vendors/bootstrap/bootstrap-select.min.js"></script>    
+    <!-- Third party plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <!-- Contact form JS-->
+    <script src="/mail/jqBootstrapValidation.js"></script>
+    <script src="/mail/contact_me.js"></script>
+
+    <!-- Modals -->
+    <script src="/js/modals/reservasi/modal-added.js"></script>
+    <script src="/js/modals/keluhan/modal-added.js"></script>
+
+    <script src="/js/datatables/dashboard/list.js"></script>
+    
+    <!-- Core theme JS-->
+    <script src="/js/scripts.js"></script>
+    <script>
+        (function($) {
+            "use strict";
+
+            $(".toggle-password").click(function() {
+                console.log('OK')
+                $(this).toggleClass("fa-eye fa-eye-slash");
+                    var input = $($(this).attr("toggle"));
+                    if (input.attr("type") == "password") {
+                        input.attr("type", "text");
+                    } else {
+                        input.attr("type", "password");
+                }
+		    });
+        })(jQuery);
+    </script>
+</body>
+</html>

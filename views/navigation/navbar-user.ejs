@@ -1,0 +1,67 @@
+<%- include('../header/header-user') %>
+
+<body id="page-top">
+    <%- include('../modals/reservasi/added.ejs') %>
+    
+    <%- include('../modals/keluhan/added.ejs') %>
+    
+    Navigation
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">Simra</a>
+            <img class="img-circle d-md-none d-lg-none d-xl-none" style="width: 10%;" src="/images/assets_img_logo-kejaksaaan.png">
+            <!-- <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button> -->
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/profile">Profile</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/reservasi">Reservasi</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/keluhan">Keluhan</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/about">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Bottom Navbar -->
+    <nav class="navbar navbar-dark navbar-inverse navbar-expand d-md-none d-lg-none d-xl-none fixed-bottom mx-auto">
+        <ul class="navbar-nav nav-justified w-100"s>
+        <li class="nav-item">
+            <a href="/home" class="nav-link"><% if (page_name == 'home') { %>
+                <i class="fas fa-home fa-2x"></i><%} else { %>
+                <i class="fas fa-home fa-2x bg-brown"></i>
+                <% } %>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/profile" class="nav-link"><% if (page_name == 'profile') { %>
+                <i class="fas fa-user-tie fa-2x"></i><%} else { %>
+                <i class="fas fa-user-tie fa-2x bg-brown"></i>
+                <% } %>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/reservasi" class="nav-link"><% if (page_name == 'reservasi') { %>
+                <i class="fas fa-hotel fa-2x"></i><%} else { %>
+                <i class="fas fa-hotel fa-2x bg-brown"></i>
+                <% } %>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/keluhan" class="nav-link"><% if (page_name == 'keluhan') { %>
+                <i class="fas fa-comments fa-2x"></i><%} else { %>
+                <i class="fas fa-comments fa-2x bg-brown"></i>
+                <% } %>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/about" class="nav-link"><% if (page_name == 'about') { %>
+                <i class="fas fa-exclamation-circle fa-2x"></i><%} else { %>
+                <i class="fas fa-exclamation-circle fa-2x bg-brown"></i>
+                <% } %>
+            </a>
+        </li>
+        </ul>
+    </nav>

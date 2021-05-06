@@ -1,0 +1,128 @@
+<%-include('../header/header')%>
+
+<body>
+    <!-- <div class="loading"></div> -->
+
+    <!-- <div class="page_section"> -->
+<%- include('../modals/asrama/added.ejs') %>
+<%- include('../modals/asrama/delete.ejs') %>
+<%- include('../modals/asrama/deleted.ejs') %>
+<%- include('../modals/asrama/edited') %>
+
+<%- include('../modals/kamar/added.ejs') %>
+<%- include('../modals/kamar/delete.ejs') %>
+<%- include('../modals/kamar/deleted.ejs') %>
+<%- include('../modals/kamar/edited') %>
+
+<%- include('../modals/kartu/added.ejs') %>
+<%- include('../modals/kartu/edited.ejs') %>
+
+<%- include('../modals/kategoriAsset/added.ejs') %>
+<%- include('../modals/kategoriAsset/delete.ejs') %>
+<%- include('../modals/kategoriAsset/deleted.ejs') %>
+<%- include('../modals/kategoriAsset/edited') %>
+
+<%- include('../modals/asset/added.ejs') %>
+<%- include('../modals/asset/delete.ejs') %>
+<%- include('../modals/asset/deleted.ejs') %>
+<%- include('../modals/asset/edited') %>
+
+<%- include('../modals/reservasi/added.ejs') %>
+<%- include('../modals/reservasi/delete.ejs') %>
+<%- include('../modals/reservasi/deleted.ejs') %>
+<%- include('../modals/reservasi/edited') %>
+<%- include('../modals/reservasi/checkout') %>
+<%- include('../modals/reservasi/checked') %>
+
+<%- include('../modals/keluhan/process') %>
+<%- include('../modals/keluhan/processed') %>
+
+<aside id="left-panel" class="left-panel" style="background-color: #654321;">
+    <nav class="navbar navbar-expand-sm navbar-default" style="background-color:#654321;">
+
+        <div class="navbar-header">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="./"><img src="../../images/logo20201027082726.png" class="img-responsive" alt="logo"> <span class="text-title">SIMRA</span></a>
+            <a class="navbar-brand hidden" href="./"></a>
+        </div>
+
+        <div id="main-menu" class="main-menu collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="<%if (page_name == 'dashboard') { %> active <% } %>"> 
+                    <a href="/dashboard"> <i class="menu-icon fa fa-bar-chart text-white"></i>Dashboard </a>
+                </li>
+                <h3 class="menu-title" style="color: #FCF2C3;">MANAJEMEN ASRAMA</h3><!-- /.menu-title -->
+                <li class="<%if (page_name == 'asrama') { %> active <% } %> menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" style="color: white;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-university" style="color: white;"></i>Asrama</a>
+                    <ul class="sub-menu children dropdown-menu" style="background-color: #654321;">
+                        <li><i class="fa fa-university"></i><a href="/asrama">Asrama</a></li>
+                        <li><i class="fa fa-plus"></i><a href="/asrama/tambah">Tambah Asrama</a></li>
+                    </ul>
+                </li>
+                <li class="<%if (page_name == 'kartu') { %> active <% } %> menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="icon-nav menu-icon fa fa-id-card" style="color: white;"></i>Kartu RFID</a>
+                    <ul class="sub-menu children dropdown-menu" style="background-color: #654321;">
+                        <li><i class="fa fa-id-card" aria-hidden="true"></i></i><a href="/kartu">Kartu RFID</a></li>
+                        <li><i class="fa fa-plus"></i><a href="/kartu/tambah">Tambah Kartu</a></li>
+                    </ul>
+                </li>
+                <li class="<%if (page_name == 'kamar') { %> active <% } %> menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="icon-nav menu-icon fa fa-bed" style="color: white;"></i>Kamar</a>
+                    <ul class="sub-menu children dropdown-menu" style="background-color: #654321;">
+                        <li><i class="fa fa-bed"></i><a href="/kamar">Kamar</a></li>
+                        <li><i class="fa fa-plus"></i><a href="/kamar/tambah">Tambah Kamar</a></li>
+                    </ul>
+                </li>
+                <li class="<%if (page_name == 'reservasi') { %> active <% } %> menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="icon-nav menu-icon fa fa-h-square" style="color: white;"></i>Reservasi</a>
+                    <ul class="sub-menu children dropdown-menu" style="background-color: #654321;">
+                        <li><i class="fa fa-h-square"></i><a href="/reservasi">Reservasi</a></li>
+                        <li><i class="fa fa-plus"></i><a href="/reservasi/tambah">Tambah Reservasi</a></li>
+                    </ul>
+                </li>
+                <li class="<%if (page_name == 'penghuni') { %> active <% } %> menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-users" style="color: white;"></i>Penghuni</a>
+                    <ul class="sub-menu children dropdown-menu" style="background-color: #654321;">
+                        <li><i class="fa fa-users"></i><a href="/penghuni">Penghuni</a></li>
+                    </ul>
+                </li>
+                <li class="<%if (page_name == 'kategori_asset') { %> active <% } %> menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-list-ul" style="color: white;"></i>Kategori Asset</a>
+                    <ul class="sub-menu children dropdown-menu" style="background-color: #654321;">
+                        <li><i class="icon-nav fa fa-list-ul"></i><a href="/kategori_asset">Kategori Asset</a></li>
+                        <li><i class="fa fa-plus"></i><a href="/kategori_asset/tambah">Tambah Kategori Asset</a></li>
+                    </ul>
+                </li>
+                <li class="<%if (page_name == 'asset') { %> active <% } %> menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-television" style="color: white;"></i>Asset</a>
+                    <ul class="sub-menu children dropdown-menu" style="background-color: #654321;">
+                        <li><i class="fa fa-television"></i><a href="/asset">Asset</a></li>
+                        <li><i class="fa fa-plus"></i><a href="/asset/tambah">Tambah Asset</a></li>
+                    </ul>
+                </li>
+                <li class="<%if (page_name == 'keluhan') { %> active <% } %> menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-comments" aria-hidden="true" style="color: white;"></i>Keluhan</a>
+                    <ul class="sub-menu children dropdown-menu" style="background-color: #654321;">
+                        <li><i class="fa fa-comments" aria-hidden="true"></i><a href="/keluhan">Keluhan</a></li>
+                    </ul>
+                </li>
+
+                <h3 class="menu-title text-green" style="color: #FCF2C3;">LOGS</h3>
+                <!-- /.menu-title -->
+                <li class="<%if (page_name == 'logs') { %> active <% } %> menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-sticky-note" style="color: white;"></i>Logs</a>
+                    <ul class="sub-menu children dropdown-menu" style="background-color: #654321;">
+                        <li><i class="fa fa-sticky-note"></i><a href="/logs">Logs</a></li>
+                    </ul>
+                </li>
+
+                <h3 class="menu-title text-green" style="color: #FCF2C3;">KELUAR</h3>
+                <li class="menu-item">
+                    <a href="/logout"><i class="menu-icon fa fa-sign-out" aria-hidden="true" style="color: white;"></i> Logout</a>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+</aside><!-- /#left-panel -->

@@ -1,0 +1,234 @@
+<%- include('../../navigation/navbar-user') %>
+
+<!-- Masthead-->
+<header class="masthead text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <!-- Masthead Avatar Image-->
+        <!-- <img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="" /> -->
+        <!-- Masthead Heading-->
+        <h1 class="masthead-heading text-uppercase mb-0"><b>Denah Kamar</h1>
+        <!-- Icon Divider-->
+        <!-- <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div> -->
+        <!-- Masthead Subheading-->
+        <!-- <p class="masthead-subheading font-weight-light mb-0">Graphic Artist - Web Designer - Illustrator</p> -->
+    </div>
+</header>
+
+<!-- Footer-->
+<footer class="footer text-center">
+    <div class="container">
+        <div class="row">
+            <!-- Footer Location-->
+            <div class="col-lg-12">
+                <select name="id" id="id" class="form-control">
+                    <option value="">Pilih Lantai</option>
+                    <% lantai.forEach(row => { %>
+                        <option value="<%= row.id %>"><%= row.lantai %></option>
+                    <% }) %>
+                </select>
+                <br>
+            <% if (result.length == 0 && dataAsramaL == null) { %> 
+            <table class="table table-striped table-bordered" id="tableAsramaL" style="border-color: black;">
+                <tr>
+                    <td class="text-center">Tidak ada data</td>
+                </tr>
+            </table>
+            <% } else { %>
+                <table class="table table-hover table-striped table-bordered tableAsrama" id="tableL" style="border: 1px solid black;">
+                    <tr>
+                        <th class="" colspan="8" style="text-align: center;">
+                            <% if (result.length > 0) { %> 
+                                <%= typeof result[0].nama_asrama != 'undefined' ? result[0].nama_asrama : '' %>
+                                <br>
+                                Lantai : <%= typeof result[0].id_lantai != 'undefined' ? result[0].id_lantai : '' %>
+                            <% } else { %>
+                                <% if (dataAsramaL.length > 0) { %>
+                                    <%= typeof dataAsramaL[0].nama_asrama != 'undefined' ? dataAsramaL[0].nama_asrama : '' %>
+                                    <br>
+                                    Lantai : <%= typeof dataAsramaL[0].lantai != 'undefined' ? dataAsramaL[0].lantai : '' %>
+                                <% } %>
+                            <% } %>
+                        </th>
+                    </tr>
+                        <% if (result.length > 0) { %>
+                            <% var col = 6 %>
+                            <% var row = Math.ceil(result.length / col) %>
+                            <% var count = 0 %>
+                            <% for (var i = 1; i <= row; i++) { %>  
+                                <tr>
+                                <% for (var j = 1; j <= col; j++) { %>
+                                    <% if (result.nama_asrama = 'A (Laki-laki)') { %>
+                                        <% if (result[count] != undefined && result[count] != null) { %>
+                                            <td <% if (result[count].status == 0) { %> class="text-white bg-success text-center" data-toggle='tooltip' data-placement='top' title='Kamar tersedia' <% } else { %> class="text-white text-center bg-danger" data-toggle='tooltip' data-placement='top' title='Kamar tidak tersedia' <% } %>>
+                                                <% if (session.data.kewenangan_id == 1) { %>
+                                                    <a href="/kamar/detail/<%= result[count].id %>" class="text-white"><%= result[count].nama_kamar %></a>
+                                                <% } else { %>
+                                                    <a href="#" class="text-white"><%= result[count].nama_kamar %></a>
+                                                <% } %>   
+                                            </td>
+                                            <% count++ %>
+                                        <% } else { %>
+                                            <% continue %>
+                                        <% } %>
+                                        <% count++ %>
+                                    <% } %>
+                                <% } %>
+                                </tr>
+                                <% if (i < row) { %>
+                                    <tr>
+                                        <td class="" colspan="8" style="text-align: center;"></td>
+                                    </tr>
+                                <% } %>
+                            <% } %>
+                        <% } else { %> 
+                            <% var col = 6 %>
+                            <% var row = Math.ceil(dataAsramaL.length / col) %>
+                            <% var count = 0 %>
+                            <% for (var i = 1; i <= row; i++) { %>  
+                                <tr>
+                                <% for (var j = 1; j <= col; j++) { %>
+                                    <% if (dataAsramaL[count] != undefined && dataAsramaL[count] != null) { %>
+                                        <td <% if (dataAsramaL[count].status == 0) { %> class="text-white text-center bg-success" data-toggle='tooltip' data-placement='top' title='Kamar tersedia' <% } else { %> class="text-white text-center bg-danger" data-toggle='tooltip' data-placement='top' title='Kamar tidak tersedia' <% } %>>
+                                            <% if (session.data.kewenangan_id == 1) { %>
+                                                <a href="/kamar/detail/<%= dataAsramaL[count].id %>" class="text-white"><%= dataAsramaL[count].nama_kamar %></a>
+                                            <% } else { %>
+                                                <a href="#" class="text-white"><%= dataAsramaL[count].nama_kamar %></a>
+                                            <% } %>  
+                                        </td>
+                                        <% count++ %>
+                                    <% } else { %>
+                                        <% continue %>
+                                    <% } %>
+                                <% } %>
+                                </tr>
+                                <% if (i < row) { %>
+                                    <tr>
+                                        <td class="" colspan="8" style="text-align: center;"></td>
+                                    </tr>
+                                <% } %>
+                            <% } %>
+                        <% } %>
+                </table>
+            <% } %>
+        <br>
+        <% if (result.length == 0 && dataAsramaP == null) { %> 
+            <table class="table table-striped table-bordered" id="tableAsramaP">
+                <tr>
+                    <td class="text-center">Tidak ada data</td>
+                </tr>
+            </table>
+            <% } else { %>
+            <table class="table table-striped table-bordered tableAsrama" id="tableAsramaP">
+                <tr>
+                    <th class="" colspan="8" style="text-align: center;">
+                        <% if (result.length > 0) { %> 
+                                <% for (let i of result) { %> 
+                                    <% if (i.nama_asrama == 'B (Perempuan)') { %>
+                                        <%= typeof i.nama_asrama != 'undefined' ? i.nama_asrama : '' %>
+                                        <% break %>
+                                    <% } %>
+                                <% } %>
+                                    <br>
+                                    Lantai : <%= typeof result[0].id_lantai != 'undefined' ? result[0].id_lantai : '' %>
+                        <% } else { %>
+                                <% if (dataAsramaP.length > 0) { %> 
+                                    <%= typeof dataAsramaP[0].nama_asrama != 'undefined' ? dataAsramaP[0].nama_asrama : '' %>
+                                    <br>
+                                    Lantai : <%= typeof dataAsramaP[0].lantai != 'undefined' ? dataAsramaP[0].lantai : '' %>
+                                <% } %>
+                        <% } %>
+                    </th>
+                </tr>
+                <!-- <tr> -->
+                    <% if (result.length > 0) { %>
+                        <% var col = 6 %>
+                        <% var count = 0 %>
+                        <% var row = Math.ceil(result.length / col) %>
+                        <% for (var i = 1; i<= row; i++) { %> 
+                            <tr>
+                            <% for (var j = 1; j<= col; j++) { %>
+                                <% if (result.nama_asrama = 'B (Perempuan)') { %>
+                                    <% count++ %>
+                                    <% if (result[count] !== undefined && result[count] !== null) { %>
+                                        <td <% if (result[count].status == 0) { %> class="text-white tableAsrama text-center bg-success" data-toggle='tooltip' data-placement='top' title='Kamar tersedia' <% } else { %> class="text-white tableAsrama text-center bg-danger" data-toggle='tooltip' data-placement='top' title='Kamar tidak tersedia' <% } %>>
+                                            <% if (session.data.kewenangan_id == 1) { %>
+                                                <a href="/kamar/detail/<%= result[count].id %>" class="text-white"><%= result[count].nama_kamar %></a>
+                                            <% } else { %>
+                                                <a href="#" class="text-white"><%= result[count].nama_kamar %></a>
+                                            <% } %>
+                                        </td>   
+                                        <% count++ %>
+                                    <% } else { %>
+                                        <% continue %>
+                                    <% } %>   
+                                <% } %>
+                            <% } %>
+                            </tr>
+                            <% if (i < row) { %>
+                                <tr>
+                                    <td class="break" colspan="8" style="text-align: center;"></td>
+                                </tr>
+                                
+                            <% } %>
+                        <% } %>
+                    <% } else { %> 
+                            <% var col = 6 %>
+                            <% var count = 0 %>
+                            <% var row = Math.ceil(dataAsramaP.length / col) %>
+                            <% for (var i = 1; i<= row; i++) { %> 
+                                <tr>
+                                <% for (var j = 1; j<= col; j++) { %>
+                                    <% if (dataAsramaP[count] !== undefined && dataAsramaP[count] !== null) { %>
+                                        <td <% if (dataAsramaP[count].status == 0) { %> class="text-white text-center tableAsrama bg-success" data-toggle='tooltip' data-placement='top' title='Kamar tersedia' <% } else { %> class="tableAsrama text-white text-center bg-danger" data-toggle='tooltip' data-placement='top' title='Kamar tidak tersedia' <% } %>>
+                                            <% if (session.data.kewenangan_id == 1) { %>
+                                                <a href="/kamar/detail/<%= dataAsramaP[count].id %>" class="text-white"><%= dataAsramaP[count].nama_kamar %></a>
+                                            <% } else { %>
+                                                <a href="#" class="text-white"><%= dataAsramaP[count].nama_kamar %></a>
+                                            <% } %>
+                                        </td>   
+                                        <% count++ %>
+                                    <% } else { %>
+                                        <% continue %>
+                                    <% } %>
+                                <% } %>
+                                </tr>
+                                <% if (i < row) { %>
+                                    <tr>
+                                        <td class="break" colspan="8" style="text-align: center;"></td>
+                                    </tr>
+                                <% } %>
+                            <% } %>
+                    <% } %>
+            </table>
+        <% } %>
+            <table class="table table-sm">
+                <tr>
+                    <td class="bg-success text-white"><small>Kamar tersedia</small></td>
+                    <td class="bg-danger text-white"><small>Kamar tidak tersedia</small></td>
+                </tr>
+            </table>
+            </div>
+
+            <!-- Footer Social Icons-->
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <!-- <h4 class="text-uppercase mb-4">Around the Web</h4> -->
+            </div>
+
+            <!-- Footer About Text-->
+            <div class="col-lg-4">
+                <!-- <h4 class="text-uppercase mb-4">About Freelancer</h4>
+                <p class="lead mb-0"> -->
+                    <!-- Freelance is a free to use, MIT licensed Bootstrap theme created by -->
+                    <!-- <a href="http://startbootstrap.com">Start Bootstrap</a>
+                    .
+                </p> -->
+            </div>
+        </div>
+    </div>
+</footer>
+
+<%- include('../../footer/footer-user') %>

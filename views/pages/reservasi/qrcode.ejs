@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="/new/vendors/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/new/vendors/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/new/vendors/themify-icons/css/themify-icons.css">
+<link rel="stylesheet" href="/new/vendors/flag-icon-css/css/flag-icon.min.css">
+<link rel="stylesheet" href="/new/vendors/selectFX/css/cs-skin-elastic.css">
+<link rel="stylesheet" href="/new/vendors/jqvmap/dist/jqvmap.min.css">
+<link rel="stylesheet" href="/new/vendors/bootstrap/bootstrap-select.min.css">
+
+<style>
+    .modal {
+        margin-top: 10%;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col col-sm-12 col-md-12 col-lg-12">
+            <div class="modal fade none-border" id="modalQRCode">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <img src="<%= qrcode %>" style="width: 100%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/new/vendors/jquery/dist/jquery.min.js"></script>
+<script src="/new/vendors/popper.js/dist/umd/popper.min.js"></script>
+<script src="/new/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script>
+    (function($) {
+        "use strict";
+        $(window).on('load', function() {
+            $('#modalQRCode').modal('show')
+        });
+    })(jQuery);
+</script>

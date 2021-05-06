@@ -1,0 +1,109 @@
+<div class="card">
+    <div class="card-header">
+        <i class="fa fa-bed"></i><strong> Edit Data</strong> Kamar
+    </div>
+    <div class="card-body card-block">        
+        <form action="/kamar/edit/editkamar" method="post" enctype="multipart/form-data" class="form-horizontal">
+            <% if (errors) { %>
+                <div class="sufee-alert alert with-close alert-danger alert-dismissible">
+                    <span class="badge badge-pill badge-danger">Failed</span>
+                    <%= typeof errors !== 'undefined' ? errors : '' %>
+                    <button type="button" class="close" id="errors" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <% } %>
+            <% if (success) { %>
+                <div class="sufee-alert alert with-close alert-success alert-dismissible" role="alert">
+                    <span class="badge badge-pill badge-success">Success</span>
+                    <span style="text-align: center;"><%= typeof success !== 'undefined' ? success : '' %></span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <meta http-equiv="refresh" content="2;URL='/kamar'" />
+            <% } %>
+            <div class="row form-group">
+                <div class="col col-md-3"><label class=" form-control-label">ID</label></div>
+                <div class="col-12 col-md-9">
+                    <input class="form-control" type="text" value="<%= kamar.id %>" disabled />
+                    <input type="hidden" name="id" value="<%= kamar.id %>" id="id">
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="nama_asrama-input" class=" form-control-label">Nomor Kamar</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    <input type="text" id="nama_kamar" value="<%= typeof kamar.nama_kamar != 'undefined' ? kamar.nama_kamar : '' %>" name="nama_kamar" placeholder="Nama kamar.." class="form-control" required="required">
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="jumlah_lantai-input" class=" form-control-label">Kapasitas</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    <input type="number" id="kapasitas" value="<%= typeof kamar.kapasitas != 'undefined' ? kamar.kapasitas : '' %>" name="kapasitas" placeholder="Kapasitas.." class="form-control" required>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="disabled-input" class=" form-control-label">Posisi Kamar Lantai</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    <select name="id_lantai" class="form-control combobox" data-live-search="true">
+                        <option value="">Lantai</option>
+                    <% lantai.forEach(row => { %>
+                        <option value="<%= row.id %>" <% if (row.id == kamar.id_lantai) { %> selected <% } %>><%= row.lantai %></option>
+                    <% }) %>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="disabled-input" class=" form-control-label">Asrama</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    <select name="id_asrama" class="form-control combobox" data-live-search="true">
+                        <option value="">Asrama</option>
+                    <% asrama.forEach(row => { %>
+                        <option value="<%= row.id %>" <% if (row.id == kamar.id_asrama) { %> selected <% } %>><%= row.nama_asrama %></option>
+                    <% }) %>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="select" class=" form-control-label">Gambar</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    <img src="/images/uploads/<%= kamar.gambar.filename %>" alt="gambar" style="width: 20%;">
+                    <input type="hidden" name="idGambar" id="idGambar" value="<%= kamar.gambar.idGambar %>">
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    
+                </div>
+                <div class="col 12 col-md-4">
+                    <input type="file" name="gambar" class="form-control" onchange="readURL(this)" id="gambar" accept="image/jpeg, image/jpg, image/png">
+                    <div class="preview-images">
+                        <img id="previewImg">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col col-md-3">
+                    <input type="hidden" name="browser" id="browser" value="">
+                    <input type="hidden" name="browser_version" id="browser_version" value="">
+                    <input type="hidden" name="os" id="os" value="">
+                </div>
+                <div class="col col-md-7">
+                    <a href="/kamar" class="btn btn-outline-success"><i class="fa fa-angle-left"></i> Kembali</a>
+                    <button type="submit" class="btn btn-outline-primary openActionEditKamar"><i class="fa fa-save"></i> Simpan</button>
+                    <button type="reset" class="btn btn-outline-danger"><i class="fa fa-ban"></i> Reset</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

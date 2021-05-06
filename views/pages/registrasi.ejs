@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Registrasi | Sistem Informasi Manajemen Asrama Badiklat Kejaksaan RI </title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="../images/logo-kejaksaaan.png"/>
+	<link rel="stylesheet" type="text/css" href="/admin/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/admin/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/core.css">
+	<link rel="stylesheet" href="/css/components.css">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/blue.css">
+	<link rel="stylesheet" href="/css/colors.css">
+	<style>
+		body{
+			background-color:#f5f5f5;
+			background-image: url("/images/background_20201125034709.png");
+			background-repeat: no-repeat;
+			background-size:cover;
+				}
+				.login-container .page-container .content .login-form {
+			max-width:600px;
+			width:unset;
+			margin-top:50px;
+			border-radius:unset;
+			border:1px solid #a0c9ea;
+			padding: 4px;
+			background: transparent;
+		}
+		.form-group {
+			height: 70px;
+		}
+		.input-group {
+			height: 40px;
+		}
+		.logo-login img {
+			border: 6px solid#654321 ;
+			border-radius: 100px;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			position:absolute;
+			top:0px;
+		}
+		.login-form .input-login {
+			border:1px solid #bbddf8;
+			padding: 22px 0px;
+		}
+		.login-form .input-login:focus {
+			border: 1px solid #1e88e5;
+		}
+		.panel-body.login-form .panel-border{
+			padding: 40px 80px 40px 80px;
+		}
+		.panel-body.login-form .btnlogin {
+			background-color:#654321  !important;
+		}
+		.form-control-feedback {
+			height: 40px !important;
+			line-height: 45px !important;
+		}
+		@media only screen and (max-width: 600px) {
+		  .panel-body.login-form .panel-border{
+				padding-left:40px;
+				padding-right:40px;
+			}
+		}
+		h5.content-group {
+			margin-top:60px;
+			font-weight:bold;
+			font-size: 35px;
+		}
+		#effect7{
+			position:relative;
+			/*-webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+			-moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+			box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;*/
+			-webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+			-moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+			box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+			background-image: url("/images/bg-login-panel.png");
+			background-repeat: repeat;
+			border-radius: 4px;
+			-moz-border-radius:4px;
+			-webkit-border-radius:4px;
+		}
+		.field-icon {
+			float: right;
+			margin-left: 90%;
+			margin-top: 10px;
+			position: absolute;
+			z-index: 5;
+		}
+	</style>
+</head>
+<body class="login-container">
+	<div class="page-container">
+		<div class="page-content">
+			<div class="content-wrapper">
+				<div class="content">
+					<form action="/register" method="post">
+						<div class="panel panel-body login-form">
+						<div class="panel-border" id="effect7">
+							<div class="text-center">
+								<div class="text-slate-300 logo-login"><img src="/images/logo20201125035312.png" alt="e-SIMRA" width="170"></div>
+									<h5 class="content-group">SIMRA</h5>
+								</div>
+								<div class="col-lg-12">
+									<% if (errors) { %>
+										<div class="alert alert-danger alert-dismissible fade show" role="alert">
+											<span style="text-align: center;"><%= typeof errors !== 'undefined' ? errors : '' %></span>
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+									<% } %>
+									<% if (success) { %>
+										<div class="alert alert-success alert-dismissible fade show" role="alert">
+											<span style="text-align: center;"><%= typeof success !== 'undefined' ? success : '' %></span>
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+									<% } %>
+                                </div>
+                            <div class="form-group mb-0">
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <input type="text" class="form-control" name="nama_lengkap" value="<%= typeof nama_lengkap !== 'undefined' ? nama_lengkap : '' %>" placeholder="Nama Lengkap" required>
+                                </div>
+                            </div>
+                            <div class="form-group mb-0">
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <input type="text" class="form-control" name="username" value="<%= typeof username !== 'undefined' ? username : '' %>" placeholder="Username" required>
+                                </div>
+							</div>
+							
+							<div class="form-group mb-0">
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <input type="text" class="form-control" name="email" value="<%= typeof email !== 'undefined' ? email : '' %>" placeholder="Email" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-0">
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-lock"></i>
+                                    </div>
+                                    <select name="jenis_kelamin" class="form-control" required>
+                                        <option value="">Jenis Kelamin</option>
+                                        <option value="l" <% if (jenis_kelamin == 'l') { %> selected <% } %>>Laki-laki</option>
+                                        <option value="p" <% if (jenis_kelamin == 'p') { %> selected <% } %>>Perempuan</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group mb-0">
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <input type="text" class="form-control" name="nik" value="<%= typeof nik !== 'undefined' ? nik : '' %>" placeholder="nik" required>
+                                </div>
+                            </div>
+
+							<div class="form-group mb-0">
+								<div class="input-group date">
+									<div class="input-group-addon">
+										<i class="fa fa-user"></i>
+									</div>
+									<input type="text" class="form-control" name="nip" placeholder="nip" value="<%= typeof nip !== 'undefined' ? nip : '' %>" required>
+								</div>
+                            </div>
+
+                            <div class="form-group mb-0">
+								<div class="input-group date">
+									<div class="input-group-addon">
+										<i class="fa fa-user"></i>
+									</div>
+									<select name="id_master_diklat" class="form-control" required>
+                                        <option value="">Pilih Diklat</option>
+                                        <% result.forEach(row => { %> 
+                                            <option value="<%= row.id %>" <% if (row.id == id_master_diklat) { %> selected <% } %>><%= row.master %></option>
+                                        <% }) %>
+                                    </select>
+								</div>
+                            </div>
+
+                            <div class="form-group mb-0">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <textarea class="form-control" cols="30" name="alamat" placeholder="Alamat" required><%= typeof nama_lengkap !== 'undefined' ? nama_lengkap : '' %></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group mb-0">
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <input type="text" class="form-control" name="no_telepon" placeholder="No Telepon" value="<%= typeof no_telepon!== 'undefined' ? no_telepon : '' %>" required>
+                                </div>
+                            </div>
+
+
+							<div class="form-group mb-0">
+								<div class="input-group date">
+									<div class="input-group-addon">
+										<i class="fa fa-lock"></i>
+									</div>
+									<input type="password" id="password-field" class="form-control" name="password" placeholder="Password" value="<%= typeof password !== 'undefined' ? password : '' %>" required>
+									<span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+								</div>
+                            </div>
+                            <div class="form-group mb-0">
+								<div class="input-group date">
+									<div class="input-group-addon">
+										<i class="fa fa-lock"></i>
+									</div>
+									<input type="password" id="repassword-field" class="form-control" name="repassword" value="<%= typeof repassword !== 'undefined' ? repassword : '' %>" placeholder="Konfirmasi Password" required>
+									<span toggle="#repassword-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+								</div>
+							</div>
+
+							<div class="p-0">
+								<div class="form-group">
+									<input type="hidden" name="browser" id="browser" value="">
+									<input type="hidden" name="browser_version" id="browser_version" value="">
+									<input type="hidden" name="os" id="os" value="">
+									<button type="submit" name="btnlogin" class="btn btn-primary btn-block btnlogin actionLogin">Register <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></button>
+								</div>
+							</div>
+							<div class="text-center">
+								
+							</div>
+						</div>
+						</div>
+					</form>			
+				<div class="footer text-muted text-center">
+						Sistem Informasi Asrama Badiklat Kejaksaan RI | Copyright &copy; 2020 <strong>SIMRA</strong>, All Rights Reserved.
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+
+    <script src="/admin/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="/admin/vendor/animsition/js/animsition.min.js"></script>
+	<script src="/admin/js/custom.js"></script>
+	<script src="/admin/vendor/bootstrap/js/popper.js"></script>
+	<script src="/admin/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/admin/vendor/select2/select2.min.js"></script>
+	<script src="/admin/vendor/daterangepicker/moment.min.js"></script>
+	<script src="/admin/vendor/daterangepicker/daterangepicker.js"></script>
+	<script src="/admin/vendor/countdowntime/countdowntime.js"></script>
+	<script src="/admin/js/main.js"></script>
+	<script>
+		$(".toggle-password").click(function() {
+			$(this).toggleClass("fa-eye fa-eye-slash");
+				var input = $($(this).attr("toggle"));
+				if (input.attr("type") == "password") {
+					input.attr("type", "text");
+				} else {
+					input.attr("type", "password");
+			}
+		});
+	</script>
+</html>

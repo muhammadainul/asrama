@@ -1,0 +1,260 @@
+<%- include('../../navigation/navbar-user') %>
+
+<!-- Contact Section-->
+<div class="page-section mt-5" id="contact">
+    <div class="container">
+        <!-- Contact Section Heading-->
+        <h2 class="page-section-heading text-center text-secondary mb-0">Reservasi</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-hotel"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Contact Section Form-->
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.-->
+                <form action="/reservasi/tambah/tambahreservasi" method="post" class="form-horizontal">
+                    <% if (profile.id_kamar != null) { %>
+                        <div class="form-group">
+                            <input type="hidden" name="id_tamu" value="<%= typeof profile.id_tamu != 'undefined' ? profile.id_tamu : '' %>">
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="jumlah_lantai-input" class=" form-control-label">Nama Lengkap</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input readonly type="text" id="nama_lengkap" value="<%= typeof session.data.namaLengkap != 'undefined' ? session.data.namaLengkap : '' %>" name="nama_lengkap" placeholder="Nama lengkap.." class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="disabled-input" class=" form-control-label">NIK</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input readonly type="text" id="nik" value="<%= typeof profile.nik != 'undefined' ? profile.nik : '' %>" name="nik" placeholder="NIK.." class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="disabled-input" class=" form-control-label">NIP</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input readonly type="text" id="nip" value="<%= typeof session.data.nip != 'undefined' ? session.data.nip : '' %>" name="nip" placeholder="NIP.." class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="select" class=" form-control-label">Alamat</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <textarea readonly required name="alamat" id="alamat" value="<%= typeof profile.alamat != 'undefined' ? profile.alamat : '' %>" class="form-control"><%= typeof profile.alamat != 'undefined' ? profile.alamat : '' %></textarea>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="select" class=" form-control-label">Jenis Kelamin</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                               <select readonly name="jenis_kelamin" class="form-control" required>
+                                    <option value="">Jenis Kelamin</option>
+                                    <option value='l' <% if (profile.jenis_kelamin == 'l') { %> selected <% } %>>Laki-laki</option>
+                                    <option value='p' <% if (profile.jenis_kelamin == 'p') { %> selected <% } %>>Perempuan</option>
+                               </select>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="select" class=" form-control-label">No Telepon</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input readonly required type="text" id="no_telepon" value="<%= typeof profile.no_telepon != 'undefined' ? profile.no_telepon : '' %>" name="no_telepon" placeholder="no_telepon.." class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="select" class=" form-control-label">Asrama</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="text" readonly name="id_asrama" value="<%= typeof reservasi.nama_asrama != 'undefined' ? reservasi.nama_asrama : '' %>" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="select" class=" form-control-label">Kamar</label>
+                            </div>  
+                            <div class="col-12 col-md-9">
+                                <input type="text" readonly name="id_kamar" value="<%= typeof reservasi.nama_kamar != 'undefined' ? reservasi.nama_kamar : '' %> | <%= typeof reservasi.nama_asrama != 'undefined' ? reservasi.nama_asrama : '' %>" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="select" class="form-control-label">Tanggal Reservasi</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input readonly type="text" id="tgl_reservasi" value="<%= typeof tgl_reservasi != 'undefined' ? tgl_reservasi : '' %>" name="tgl_reservasi" placeholder="tgl_reservasi.." class="form-control disabled" required>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="select" class=" form-control-label">Tanggal Check In</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input readonly type="date" id="tgl_cekin" value="<%= typeof tgl_cekin != 'undefined' ? tgl_cekin : '' %>" placeholder="Tanggal Cekin" name="tgl_cekin" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="select" class=" form-control-label">Tanggal Check Out</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input readonly disabled type="text" id="tgl_cekout" value="Belum check-out" name="tgl_cekout" placeholder="tgl_cekout.." class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" name="browser" id="browser" value="">
+                            <input type="hidden" name="browser_version" id="browser_version" value="">
+                            <input type="hidden" name="os" id="os" value="">
+                            <div class="">
+                                <button disabled type="submit" class="btn btn-primary disabled"><i class="fa fa-save"></i> Simpan</button>
+                                <button disabled type="reset" class="btn btn-danger disabled"><i class="fa fa-ban"></i> Reset</button>   
+                            </div>
+                            </div>
+                        </div>
+                    </form>
+                    <% } else { %>
+                    <div class="sufee-alert alert with-close alert-danger alert-dismissible">
+                        <span class="badge badge-pill badge-danger"></span>
+                        <b>Semua form harap diisi.</b>
+                        <button type="button" class="close" id="errors" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" name="id_tamu" value="<%= typeof profile.id != 'undefined' ? profile.id : '' %>">
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="jumlah_lantai-input" class=" form-control-label">Nama Lengkap</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input type="text" id="nama_lengkap" value="<%= typeof session.data.namaLengkap != 'undefined' ? session.data.namaLengkap : '' %>" name="nama_lengkap" placeholder="Nama lengkap.." class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="disabled-input" class=" form-control-label">NIK</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input type="text" id="nik" value="<%= typeof profile.nik != 'undefined' ? profile.nik : '' %>" name="nik" placeholder="NIK.." class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="disabled-input" class=" form-control-label">NIP</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input type="text" id="nip" value="<%= typeof session.data.nip != 'undefined' ? session.data.nip : '' %>" name="nip" placeholder="NIP.." class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="select" class=" form-control-label">Alamat</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <textarea required name="alamat" id="alamat" value="<%= typeof profile.alamat != 'undefined' ? profile.alamat : '' %>" class="form-control"><%= typeof profile.alamat != 'undefined' ? profile.alamat : '' %></textarea>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="select" class=" form-control-label">Jenis Kelamin</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                           <select name="jenis_kelamin" class="form-control" required>
+                                <option value="">Jenis Kelamin</option>
+                                <option value='l' <% if (profile.jenis_kelamin == 'l') { %> selected <% } %>>Laki-laki</option>
+                                <option value='p' <% if (profile.jenis_kelamin == 'p') { %> selected <% } %>>Perempuan</option>
+                           </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="select" class=" form-control-label">No Telepon</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input required type="text" id="no_telepon" value="<%= typeof profile.no_telepon != 'undefined' ? profile.no_telepon : '' %>" name="no_telepon" placeholder="no_telepon.." class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="select" class=" form-control-label">Asrama</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <select name="id_asrama" class="form-control" data-live-search="true" required>
+                                <option value="">Pilih Asrama</option>
+                            <% asrama.forEach(row => { %>
+                                <option value="<%= row.id %>" data-tokens="<%= row.id %>"><%= row.nama_asrama %></option>
+                            <% }) %>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="select" class=" form-control-label">Kamar</label>
+                        </div>  
+                        <div class="col-12 col-md-9">
+                            <select name="id_kamar" class="form-control" data-live-search="true" required>
+                                    <option value="">Pilih Ketersediaan Kamar</option>
+                            <% kamar.forEach(row => { %>
+                                <% if (row.status == 1) { %>
+                                    <option disabled data-content="<%= row.nama_kamar %> | <%= row.nama_asrama %> <span class='badge badge-danger'>Not Available</span>" value="<%= row.id %>" data-tokens="<%= row.id %>"><%= row.nama_kamar %> | <%= row.nama_asrama %> Not Available </option>
+                                <% } else { %>
+                                    <option data-content="<%= row.nama_kamar %> | <%= row.nama_asrama %> <span class='badge badge-primary'>Available</span>" value="<%= row.id %>" data-tokens="<%= row.id %>"><%= row.nama_kamar %> | <%= row.nama_asrama %></option>
+                                <% } %>
+                            <% }) %>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="select" class=" form-control-label">Tanggal Reservasi</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input readonly type="text" id="tgl_reservasi" value="<%= typeof tgl_reservasi != 'undefined' ? tgl_reservasi : '' %>" name="tgl_reservasi" placeholder="tgl_reservasi.." class="form-control disabled" required>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="select" class=" form-control-label">Tanggal Check In</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input type="date" id="tgl_cekin" value="<%= typeof tgl_cekin != 'undefined' ? tgl_cekin : '' %>" placeholder="Tanggal Cekin" name="tgl_cekin" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="select" class=" form-control-label">Tanggal Check Out</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input disabled type="text" id="tgl_cekout" value="Belum check-out" name="tgl_cekout" placeholder="tgl_cekout.." class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" name="browser" id="browser" value="">
+                        <input type="hidden" name="browser_version" id="browser_version" value="">
+                        <input type="hidden" name="os" id="os" value="">
+                        <div class="">
+                            <button type="submit" class="btn btn-primary openActionAddReservasi" data-dismiss="modals"><i class="fa fa-save"></i> Simpan</button>
+                            <button type="reset" class="btn btn-danger"><i class="fa fa-ban"></i> Reset</button>
+                        </div>
+                        </div>
+                    </div>
+                    <% } %>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../../footer/footer-user') %>

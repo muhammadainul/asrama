@@ -1,0 +1,178 @@
+<%- include('../../navigation/navbar-user') %>
+
+<!-- Portfolio Section-->
+<div class="page-section mt-5">
+    <div class="container">
+        <!-- Portfolio Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Profile</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-user"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-lg-4 col-sm-4 mx-auto">
+                <div class="card">
+                    <div class="card-header">
+                        <strong class="card-title mb-3">Profile</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="mx-auto d-block">
+                            <img class="rounded-circle mx-auto d-block" src="/images/user.png" alt="User">
+                            <h5 class="text-center mt-2 mb-1"><%= session.data.namaLengkap %></h5>
+                            <div class="location text-center"><i class="fas fa-map-marker"></i> <%= profile.alamat %></div>
+                        </div>
+                        <hr>
+                        <div class="card-text text-sm-center">
+                            <p>NIP : <%= session.data.nip %></p>
+                            <p>NIK : <%= profile.nik %></p> 
+                            <p>Jenis Kelamin : <% if (profile.jenis_kelamin == 'l') { %> Laki-laki <% } else { %> Perempuan <% } %></p>
+                            <p>Email : <%= session.data.email %></p>
+                            <p>Nomor Telepon : <%= profile.no_telepon %></p>
+                            <p>
+                                <!-- <label>Diklat</label> -->
+                                <select disabled name="id_master_diklat" class="form-control">
+                                        <option value="">Diklat</option>
+                                    <% diklat.forEach(row => { %>
+                                        <option value="<%= row.id %>" <% if (row.id == profile.id_master_diklat) { %> selected <% } %>><%= row.master %></option>
+                                    <% }) %>
+                                </select>
+                            </p>
+                        </div>
+                        <a href="/logout" class="btn btn-info"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-header">
+                        <strong class="card-title mb-3">Ubah Password</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="col col-lg-12">
+                            <form action="/profile/changePassword" method="post">
+                                    <% if (errors) { %>
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            <span style="text-align: center;"><%= typeof errors !== 'undefined' ? errors : '' %></span>
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    <% } %>
+                                    <% if (success) { %>
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                            <span style="text-align: center;"><%= typeof success !== 'undefined' ? success : '' %></span>
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <!-- <meta http-equiv="refresh" content="2; url=/"> -->
+                                    <% } %>
+                                
+                                <div class="form-group">
+                                    <label for="jumlah_kamar-input" class=" form-control-label">Password Lama</label>
+                                
+                                    <input type="hidden" id="nip" value="<%= typeof session.data.nip != 'undefined' ? session.data.nip : '' %>" name="nip" placeholder="NIP.." class="form-control" required>
+                                    <input type="password" id="oldpassword" value="<%= typeof oldpassword != 'undefined' ? oldpassword : '' %>" name="oldpassword" placeholder="Password Lama.." class="form-control" required>
+                                    <span toggle="#oldpassword" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="jumlah_lantai-input" class=" form-control-label">Password Baru</label>
+            
+                                    <input type="password" id="password" value="<%= typeof password != 'undefined' ? password : '' %>" name="password" placeholder="Password.." class="form-control" required>
+                                    <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                    
+                                </div>
+                                <div class="form-group">
+                                    <label for="jumlah_kamar-input" class="form-control-label">Repassword</label>
+                                    <input type="password" id="repassword" value="<%= typeof repassword != 'undefined' ? repassword : '' %>" name="repassword" placeholder="Repassword" class="form-control" required>
+                                    <span toggle="#repassword" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" name="browser" id="browser" value="">
+                                    <input type="hidden" name="browser_version" id="browser_version" value="">
+                                    <input type="hidden" name="os" id="os" value="">
+                
+                                    <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-save"></i> Simpan</button>
+                                    <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-lg-8 mx-auto">
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                        <label>Nama</label>
+                        <input readonly class="form-control" value="<%= session.data.namaLengkap %>"id="name" type="text" placeholder="Name" required="required" data-validation-required-message="Please enter your name." />
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                        <label>NIP</label>
+                        <input readonly class="form-control" id="nip" value="<%= session.data.nip %>" type="text" name="nip" placeholder="Email Address" required="required" data-validation-required-message="Please enter your email address." />
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                        <label>NIK</label>
+                        <input readonly class="form-control" id="nik" value="<%= profile.nik %>" type="text" name="nik" placeholder="NIK" required="required" data-validation-required-message="Please enter your email address." />
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                        <label>Jenis Kelamin</label>
+                        <input readonly class="form-control" id="jenis_kelamin" value="<% if (profile.jenis_kelamin == 'l') { %> Laki-laki <% } else { %> Perempuan <% } %>" type="text" name="jenis_kelamin" placeholder="Email Address" required="required" data-validation-required-message="Please enter your email address." />
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                        <label>Alamat</label>
+                        <textarea readonly class="form-control" id="alamat" type="text" name="jenis_kelamin" placeholder="Email Address" required="required" data-validation-required-message="Please enter your email address."><%= profile.alamat %></textarea>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                        <label>Email</label>
+                        <input readonly class="form-control" id="email" value="<%= session.data.email %>" type="text" placeholder="Email" required="required" data-validation-required-message="Please enter your phone number." />
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                        <label>No Telepon</label>
+                        <input readonly class="form-control" id="no_telepon" value="<%= profile.no_telepon %>" type="text" placeholder="No Telepon" required="required" data-validation-required-message="Please enter your phone number." />
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                        <label>Diklat</label>
+                        <select name="id_master_diklat" class="form-control">
+                                <option value="">Diklat</option>
+                            <% diklat.forEach(row => { %>
+                                <option value="<%= row.id %>" <% if (row.id == profile.id_master_diklat) { %> selected <% } %>><%= row.master %></option>
+                            <% }) %>
+                        </select>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                        <label>Kewenangan</label>
+                        <input readonly class="form-control" id="message" value="<%= session.data.kewenangan %>" name="kewenangan" rows="5" placeholder="Message" required="required" data-validation-required-message="Please enter a message.">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../../footer/footer-user') %>

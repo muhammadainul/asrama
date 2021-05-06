@@ -1,0 +1,168 @@
+<div class="card">
+    <div class="card-header">
+        <i class="fa fa-h-square"></i><strong> Tambah Data</strong> Reservasi
+    </div>
+    <div class="card-body card-block">        
+        <form action="/reservasi/tambah/tambahreservasi" method="post" class="form-horizontal">
+            <% if (errors) { %>
+                <div class="sufee-alert alert with-close alert-danger alert-dismissible">
+                    <span class="badge badge-pill badge-danger">Failed</span>
+                    <%= typeof errors !== 'undefined' ? errors : '' %>
+                    <button type="button" class="close" id="errors" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <% } %>
+            <% if (success) { %>
+                <div class="sufee-alert alert with-close alert-success alert-dismissible" role="alert">
+                    <span class="badge badge-pill badge-success">Success</span>
+                    <span style="text-align: center;"><%= typeof success !== 'undefined' ? success : '' %></span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <meta http-equiv="refresh" content="3;URL='/reservasi'" />
+            <% } %>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="col col-md-3">
+                        <label for="NIK-input" class="form-control-label">Nama Lengkap</label>
+                    </div>
+                    <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                    <input type="text" id="nama_lengkap" value="<%= typeof nama_lengkap != 'undefined' ? nama_lengkap : '' %>" name="nama_lengkap" placeholder="Nama Lengkap" class="form-control" required="required">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="col col-md-3">
+                        <label for="NIK-input" class="form-control-label">NIK</label>
+                    </div>
+                    <div class="input-group-addon"><i class="fa fa-credit-card"></i></div>
+                    <input type="text" id="nik" value="<%= typeof nik != 'undefined' ? nik : '' %>" name="nik" placeholder="NIK" class="form-control" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="col col-md-3">
+                        <label for="NIP-input" class="form-control-label">NIP</label>
+                    </div>
+                    <div class="input-group-addon"><i class="fa fa-credit-card"></i></div>
+                    <input type="text" id="nip" value="<%= typeof nip != 'undefined' ? nip : '' %>" name="nip" placeholder="NIP" class="form-control" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="col col-md-3">
+                        <label for="NIP-input" class="form-control-label">Jenis Kelamin</label>
+                    </div>
+                    <div class="input-group-addon"><i class="fa fa-male" aria-hidden="true"></i></div>
+                    <select class="form-control" name="jenis_kelamin">
+                        <option value="">Jenis Kelamin</option>
+                        <option value="l">Laki-Laki</option>
+                        <option value="p">Perempuan</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="col col-md-3">
+                        <label for="alamat-input" class="form-control-label">Alamat</label>
+                    </div>
+                    <div class="input-group-addon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+                    <textarea name="alamat" id="alamat" rows="9" placeholder="Alamat.." class="form-control"><%= typeof alamat != 'undefined' ? alamat : '' %></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="col col-md-3">
+                        <label for="No_telepon-input" class="form-control-label">Nomor Telepon</label>
+                    </div>
+                    <div class="input-group-addon"><i class="fa fa-phone"></i></div>
+                    <input type="text" id="no_telepon" value="<%= typeof no_telepon != 'undefined' ? no_telepon : '' %>" name="no_telepon" placeholder="No telepon.." class="form-control" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="col col-md-3">
+                        <label for="email-input" class="form-control-label">Email</label>
+                    </div>
+                    <div class="input-group-addon"><i class="fa fa-mail"></i></div>
+                    <input type="text" id="email" value="<%= typeof email != 'undefined' ? email : '' %>" name="email" placeholder="Email.." class="form-control" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="col col-md-3">
+                        <label for="disabled-input" class="form-control-label">Pilih Asrama</label>
+                    </div>
+                    <div class="input-group-addon"><i class="fa fa-university"></i></div>
+                    <select name="id_asrama" class="form-control selectpicker" data-live-search="true" required>
+                        <option value="">Pilih Asrama</option>
+                    <% for(let i = 0; i < asrama.length; i++) { %>
+                        <option value="<%= asrama[i].id %>" data-tokens="<%= asrama[i].id %>"><%= asrama[i].nama_asrama %></option>
+                    <% } %>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="col col-md-3">
+                        <label for="disabled-input" class=" form-control-label">Pilih Kamar</label>
+                    </div>
+                    <div class="input-group-addon"><i class="fa fa-bed"></i></div>
+                    <select name="id_kamar" class="form-control selectpicker" data-live-search="true" required>
+                        <option value="">Pilih Ketersediaan Kamar</option>
+                    <% for(let i = 0; i < kamar.length; i++) { %>
+                        <% if (kamar[i].status == 1) { %>
+                            <option data-content="<%= kamar[i].nama_kamar %> | <%= kamar[i].asrama.nama_asrama %> <span class='badge badge-danger'>Not Available</span>" value="<%= kamar[i].id %>" data-tokens="<%= kamar[i].id %>" disabled></option>
+                        <% } else { %> 
+                            <option data-content="<%= kamar[i].nama_kamar %> | <%= kamar[i].asrama.nama_asrama %> <span class='badge badge-primary'>Available</span>"value="<%= kamar[i].id %>" data-tokens="<%= kamar[i].id %>"><%= kamar[i].nama_kamar %> | <%= kamar[i].asrama.nama_asrama %></option>
+                        <% } %>
+                    <% } %>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group date">
+                    <div class="col col-md-3">
+                        <label for="check_in-input" class=" form-control-label">Tanggal Reservasi</label>
+                    </div>
+                    <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                    <input type="text" value="<%= typeof tgl_reservasi != 'undefined' ? tgl_reservasi : '' %>" name="tgl_cekin" class="form-control daterange-single" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group date">
+                    <div class="col col-md-3">
+                        <label for="check_in-input" class=" form-control-label">Tanggal Check In</label>
+                    </div>
+                    <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                    <input type="date" value="<%= typeof tgl_cekin != 'undefined' ? tgl_cekin : '' %>" name="tgl_cekin" class="form-control daterange-single" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="col col-md-3">
+                        <label for="check_out-input" class=" form-control-label">Tanggal Check Out</label>
+                    </div>
+                    <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                    <input disabled type="date" id="datetimepicker1" value="<%= typeof tgl_cekout != 'undefined' ? tgl_cekout : '' %>" name="tgl_cekout" placeholder="No telepon.." class="form-control" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-3 col-md-3">
+                        <input type="hidden" name="browser" id="browser" value="">
+                        <input type="hidden" name="browser_version" id="browser_version" value="">
+                        <input type="hidden" name="os" id="os" value="">
+                    </div>
+                    <div class="col col-md-9">
+                        <a href="/reservasi" class="btn btn-outline-success"><i class="fa fa-angle-left"></i> Kembali</a>
+                        <button type="submit" class="btn btn-outline-primary openActionAddReservasi"><i class="fa fa-save"></i> Simpan</button>
+                        <button type="reset" class="btn btn-outline-danger"><i class="fa fa-ban"></i> Reset</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

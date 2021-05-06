@@ -1,0 +1,48 @@
+<div class="card">
+    <div class="card-header">
+        <i class="fa fa-television"></i> <strong class="card-title">Data Asset</strong>
+    </div>
+    <div class="card-body">
+        <a class="btn btn-outline-info" href="/asset/tambah"><i class="fa fa-plus"></i> <i class="fa fa-television"></i> Tambah Asset</a>
+        <p></p>
+        <div class="row form-group">
+            <div class="col-3">
+                <label for="idAsrama" class="label">Asrama </label>
+                <select name="idAsrama" id="idAsrama" class="form-control">
+                    <option value="">Asrama</option>
+                    <% asrama.forEach(row => { %>
+                        <option value="<%= row.id %>"><%= row.nama_asrama %></option>
+                    <% }) %>
+                </select>
+            </div>
+            <div class="col-3">
+                <label for="kategori" class="label">Kategori </label>
+                <select name="kategori" id="kategori" class="form-control">
+                    <option value="">Kategori Asset</option>
+                    <% kategoriAsset.forEach(row => { %>
+                        <option value="<%= row.id %>"><%= row.nama_kategori %></option>
+                    <% }) %>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <button style="padding: 5px 20px;" class="btn btn-outline-primary" id="buttonFilterAsset">
+                <i class="fa fa-search"></i> Filter</button>
+            </div>
+        </div>
+        <br>
+        <table id="datatableAsset" class="table table-hover table-striped table-bordered" width="100%">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Asset</th>
+                    <th>Gambar</th>
+                    <th>Keterangan</th>
+                    <th>Created</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>

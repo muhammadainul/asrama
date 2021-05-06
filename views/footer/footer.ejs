@@ -1,0 +1,121 @@
+    <!-- <footer class="text-center text-sm-start"> -->
+        <!-- Copyright -->
+        <!-- <div class="text-center p-3">
+            <a class="text-dark" href="https://mdbootstrap.com/">Sistem Informasi Manajemen Asrama Kejaksaan RI | Copyright © 2020</a>
+        </div> -->
+        <!-- Copyright -->
+    <!-- </footer> -->
+
+    <script src="/new/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="/new/vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/new/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/new/assets/js/main.js"></script>
+    
+    <script src="/new/vendors/onscan/onscan.js"></script>
+    <script src="/js/onScan.js"></script>
+
+    <script src="/js/report/list.js"></script>
+    <script src="/js/notif/list.js"></script>
+    <!-- Modals -->
+
+    <!-- Asrama -->
+    <script src="/js/modals/asrama/modal-added.js"></script>
+    <script src="/js/modals/asrama/modal-edited.js"></script>
+    <script src="/js/modals/asrama/modal-delete.js"></script>
+    <!-- Kamar -->
+    <script src="/js/modals/kamar/modal-added.js"></script>
+    <script src="/js/modals/kamar/modal-edited.js"></script>
+    <script src="/js/modals/kamar/modal-delete.js"></script>
+    <!-- Kartu -->
+    <script src="/js/modals/kartu/modal-added.js"></script>
+    <script src="/js/modals/kartu/modal-edited.js"></script>
+    <!-- Kategori Asset -->
+    <script src="/js/modals/kategoriAsset/modal-added.js"></script>
+    <script src="/js/modals/kategoriAsset/modal-edited.js"></script>
+    <script src="/js/modals/kategoriAsset/modal-delete.js"></script>
+    <!-- Asset -->
+    <script src="/js/modals/asset/modal-added.js"></script>
+    <script src="/js/modals/asset/modal-edited.js"></script>
+    <script src="/js/modals/asset/modal-delete.js"></script>
+    <!-- Reservasi -->
+    <script src="/js/modals/reservasi/modal-added.js"></script>
+    <script src="/js/modals/reservasi/modal-edited.js"></script>
+    <script src="/js/modals/reservasi/modal-dalete.js"></script>
+    <script src="/js/modals/reservasi/modal-checkout.js"></script>
+    <!-- Keluhan -->
+    <script src="/js/modals/keluhan/modal-proses.js"></script>
+
+    <!-- Custom -->
+    <!-- <script src="/js/upload/custom.js"></script> -->
+
+    <script src="/new/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/new/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/new/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="/new/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    <script src="/new/vendors/datatables.net/js/colReorder.min.js"></script>
+
+    <!-- DATEPICKER -->
+    <script src="/new/vendors/moment/moment.js"></script>
+    <script src="/new/vendors/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+    <script src="/new/vendors/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="/new/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="/new/vendors/timepicker/bootstrap-timepicker.js"></script>
+    <script src="/new/vendors/clockpicker/js/bootstrap-clockpicker.min.js"></script>
+    <script src="/new/vendors/jquery.form-pickers.init.js"></script>
+	
+	<!-- Datatables -->
+    <script src="/js/datatables/asrama/list.js"></script>
+    <script src="/js/datatables/kamar/list.js"></script>
+    <script src="/js/datatables/kamar/detail.js"></script>
+    <script src="/js/datatables/log/list.js"></script>
+    <script src="/js/datatables/kategori_asset/list.js"></script>
+    <script src="/js/datatables/asset/list.js"></script>
+    <script src="/js/datatables/reservasi/list.js"></script>
+    <script src="/js/datatables/tamu/list.js"></script>
+    <script src="/js/datatables/keluhan/list.js"></script>
+    <script src="/js/datatables/dashboard/list.js"></script>
+    <script src="/js/datatables/kartu/list.js"></script>
+
+    <!-- <script src="/new/vendors/chart.js/dist/Chart.bundle.min.js"></script> -->
+    <!-- <script src="/new/assets/js/dashboard.js"></script>
+    <script src="/new/assets/js/widgets.js"></script> -->
+    <script src="/new/vendors/bootstrap/bootstrap-select.min.js"></script>
+    <script src="/js/datepicker/bootstrap-datetimepicker.min.js"></script>
+    <!-- <script src="/new/vendors/jqvmap/dist/jquery.vmap.min.js"></script>
+    <script src="/new/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src="/new/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script> -->
+
+    <script>
+        (function($) {
+            "use strict";
+            $('#datetimepicker').datetimepicker()
+            $('.selectpicker').selectpicker();
+            $(".toggle-password").click(function() {
+                $(this).toggleClass("fa-eye fa-eye-slash");
+                    var input = $($(this).attr("toggle"));
+                    if (input.attr("type") == "password") {
+                        input.attr("type", "text");
+                    } else {
+                        input.attr("type", "password");
+                }
+            });
+
+            $(window).on('load', function() {
+                $('#modalVerified').modal('show');
+            });
+
+            $('#addBtn').on('click', addForm)
+            $('#removeBtn').on('click', removeForm)
+
+            function addForm () {
+                var new_chq_no = parseInt($('#totalForm').val()) + 1
+                var new_input = "<br><input class='form-control' type='text' name='newRfid'>"
+
+                $('#newForm').append(new_input)
+                $('#totalForm').val(new_chq_no)
+            }     
+            
+        })(jQuery);
+    </script>
+</body>
+</html>

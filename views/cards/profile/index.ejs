@@ -1,0 +1,149 @@
+<div class="card">
+    <div class="card-header">
+        <i class="fa fa-user"></i><strong> </strong> Profile
+    </div>
+    <div class="card-body card-block">  
+        <div class="row">
+            <div class="col col-lg-12">
+                <form action="/profile/editprofile" method="post" enctype="multipart/form-data" class="form-horizontal">   
+                    <div class="row form-group">
+                        <img class="rounded-circle mx-auto d-block" src="/images/user.png" alt="User">
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="nama_asrama-input" class=" form-control-label">Nama</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input readonly type="text" id="nama_lengkap" value="<%= typeof profileAdmin.nama_lengkap != 'undefined' ? profileAdmin.nama_lengkap : '' %>" name="nama_lengkap" placeholder="Nama lengkap.." class="form-control" required="required">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="nama_asrama-input" class=" form-control-label">Kewenangan</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input readonly type="text" id="kewenangan" value="<%= typeof profileAdmin.kewenangan != 'undefined' ? profileAdmin.kewenangan : '' %>" name="kewenangan" placeholder="Kewenangan.." class="form-control" required="required">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="jumlah_kamar-input" class=" form-control-label">NIP</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input readonly type="text" id="nip" value="<%= typeof session.data.nip != 'undefined' ? session.data.nip : '' %>" name="nip" placeholder="NIP.." class="form-control" required>
+                        </div>
+                    </div>
+                    <!-- <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="jumlah_lantai-input" class=" form-control-label">NIK</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input readonly type="text" id="nik" value="<%= typeof profileAdmin.nik != 'undefined' ? profileAdmin.nik : '' %>" name="nik" placeholder="NIK.." class="form-control" required>
+                        </div>
+                    </div> -->
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="jumlah_kamar-input" class=" form-control-label">Email</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input readonly type="text" id="nip" value="<%= typeof profileAdmin.email != 'undefined' ? profileAdmin.email : '' %>" name="nip" placeholder="NIP.." class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="disabled-input" class=" form-control-label">Jenis Kelamin</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <select readonly name="jenis_kelamin" class="form-control" required>
+                                <option value="">Jenis Kelamin</option>
+                                <option value='l' <% if (profileAdmin.jenis_kelamin == 'l') { %> selected <% } %>>Laki-laki</option>
+                                <option value='p' <% if (profileAdmin.jenis_kelamin == 'p') { %> selected <% } %>>Perempuan</option>
+                           </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="col col-md-3">
+                            <input type="hidden" name="browser" id="browser" value="">
+                            <input type="hidden" name="browser_version" id="browser_version" value="">
+                            <input type="hidden" name="os" id="os" value="">
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <button type="submit" class="btn btn-sm btn-outline-primary openActionEditAsrama"><i class="fa fa-save"></i> Simpan</button>
+                            <button type="reset" class="btn btn-sm btn-outline-danger"><i class="fa fa-ban"></i> Reset</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header">
+        <i class="fa fa-user"></i><strong> Ubah</strong> Password
+    </div>
+    <div class="card-body card-block">
+        <div class="row">
+            <div class="col col-lg-6">
+                <form action="/profile/changePassword" method="post">
+                        <% if (errors) { %>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <span style="text-align: center;"><%= typeof errors !== 'undefined' ? errors : '' %></span>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        <% } %>
+                        <% if (success) { %>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <span style="text-align: center;"><%= typeof success !== 'undefined' ? success : '' %></span>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <!-- <meta http-equiv="refresh" content="2; url=/"> -->
+                        <% } %>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="jumlah_kamar-input" class="form-control-label">Password Lama</label>
+                        </div>
+                        <div class="col col-md-9">
+                            <input type="hidden" id="nip" value="<%= typeof session.data.nip != 'undefined' ? session.data.nip : '' %>" name="nip" placeholder="NIP.." class="form-control" required>
+                            <input type="password" id="oldpassword" value="<%= typeof oldpassword != 'undefined' ? oldpassword : '' %>" name="oldpassword" placeholder="Password Lama.." class="form-control" required>
+                            <span toggle="#oldpassword" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="jumlah_lantai-input" class="form-control-label">Password Baru</label>
+                        </div>
+                        <div class="col col-md-9">
+                            <input type="password" id="password" value="<%= typeof password != 'undefined' ? password : '' %>" name="password" placeholder="Password.." class="form-control" required>
+                            <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="jumlah_kamar-input" class=" form-control-label">Repassword</label>
+                        </div>
+                        <div class="col col-md-9">
+                            <input type="password" id="repassword" value="<%= typeof repassword != 'undefined' ? repassword : '' %>" name="repassword" placeholder="Repassword.." class="form-control" required>
+                            <span toggle="#repassword" class="fa fa-eye field-icon toggle-password"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col col-md-3 col-lg-3 col-sm-3">
+                            <input type="hidden" name="browser" id="browser" value="">
+                            <input type="hidden" name="browser_version" id="browser_version" value="">
+                            <input type="hidden" name="os" id="os" value="">
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <button type="submit" class="btn btn-sm btn-outline-primary"><i class="fa fa-save"></i> Simpan</button>
+                            <button type="reset" class="btn btn-sm btn-outline-danger"><i class="fa fa-ban"></i> Reset</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>  
+    </div>
+</div>    

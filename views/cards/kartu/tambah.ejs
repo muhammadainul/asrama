@@ -1,0 +1,61 @@
+<div class="card">
+    <div class="card-header">
+        <i class="fa fa-id-card"></i><strong> Tambah Data</strong> Kartu
+    </div>
+    <div class="card-body card-block">        
+        <form action="/kartu/tambah/tambahkartu" method="post" class="form-horizontal">
+            <% if (errors) { %>
+                <div class="sufee-alert alert with-close alert-danger alert-dismissible">
+                    <span class="badge badge-pill badge-danger">Failed</span>
+                    <%= typeof errors !== 'undefined' ? errors : '' %>
+                    <button type="button" class="close" id="errors" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <% } %>
+            <% if (success) { %>
+                <div class="sufee-alert alert with-close alert-success alert-dismissible" role="alert">
+                    <span class="badge badge-pill badge-success">Success</span>
+                    <span style="text-align: center;"><%= typeof success !== 'undefined' ? success : '' %></span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <meta http-equiv="refresh" content="3;URL='/kartu'" />
+            <% } %>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="nama_asrama-input" class=" form-control-label">RFID</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    <input autocomplete="off" type="text" id="rfid" value="<%= typeof rfid != 'undefined' ? rfid : '' %>" name="rfid" placeholder="RFID.." class="form-control" required="required">
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="disabled-input" class=" form-control-label">Pilih Kamar</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    <select name="id_kamar" class="form-control selectpicker" data-live-search="true">
+                        <option value="">Pilih Kamar</option>
+                    <% for(let i = 0; i < kamar.length; i++) { %>   
+                        <option value="<%= kamar[i].id %>" data-tokens="<%= kamar[i].id %>"><%= kamar[i].nama_kamar %> <%= kamar[i].asrama.nama_asrama %></option>
+                    <% } %>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col col-md-3">
+                    <input type="hidden" name="browser" id="browser" value="">
+                    <input type="hidden" name="browser_version" id="browser_version" value="">
+                    <input type="hidden" name="os" id="os" value="">
+                </div>
+                <div class="col col-md-7">
+                    <a href="/kartu" class="btn btn-outline-success"><i class="fa fa-angle-left"></i> Kembali</a>
+                    <button type="submit" class="btn btn-outline-primary openActionAddKartu"><i class="fa fa-save"></i> Simpan</button>
+                    <button type="reset" class="btn btn-outline-danger"><i class="fa fa-ban"></i> Reset</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

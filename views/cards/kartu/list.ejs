@@ -1,0 +1,52 @@
+<div class="card">
+    <div class="card-header">
+        <i class="fa fa-bed"></i> <strong class="card-title">Data Kartu</strong>
+    </div>
+    <div class="card-body">
+        <a class="btn btn-outline-info" href="/kartu/tambah"><i class="fa fa-plus"></i> <i class="fa fa-id-card"></i> Tambah Kartu</a>
+        <p></p>
+        <div class="row form-group">
+            <div class="col-4">
+                <label for="idAsrama" class="label">Asrama </label>
+                <select name="idAsrama" id="idAsrama" class="form-control">
+                    <option value="">Asrama</option>
+                    <% asrama.forEach(row => { %>
+                        <option value="<%= row.id %>"><%= row.nama_asrama %></option>
+                    <% }) %>
+                </select>
+            </div>
+            <div class="col-4">
+                <label for="kamar" class="label">Kamar </label>
+                <input type="text" class="form-control" name="nama_kamar" id="namaKamar" placeholder="Masukkan nomor kamar..">
+            </div>
+            <div class="col-4">
+                <label for="status" class="label">Status </label>
+                <select name="status" id="status" class="form-control">
+                    <option value="">Status</option>
+                    <option value="0">Tersedia</option>
+                    <option value="1">Digunakan</option>
+                    <option value="2">Riwayat</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <button style="padding: 5px 20px;" class="btn btn-outline-primary" id="buttonFilterKartu">
+                <i class="fa fa-search"></i> Filter</button>
+            </div>
+        </div>
+        <br>
+        <table id="datatableCard" class="table table-hover table-striped table-bordered" width="100%">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>RFID</th>
+                    <th>Kamar</th>
+                    <th>Status</th>
+                    <th>Created</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>

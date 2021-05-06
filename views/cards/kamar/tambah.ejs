@@ -1,0 +1,95 @@
+<div class="card">
+    <div class="card-header">
+        <i class="fa fa-bed"></i><strong> Tambah Data</strong> Kamar
+    </div>
+    <div class="card-body card-block">        
+        <form action="/kamar/tambah/tambahkamar" method="post" enctype="multipart/form-data" class="form-horizontal">
+            <% if (errors) { %>
+                <div class="sufee-alert alert with-close alert-danger alert-dismissible">
+                    <span class="badge badge-pill badge-danger">Failed</span>
+                    <%= typeof errors !== 'undefined' ? errors : '' %>
+                    <button type="button" class="close" id="errors" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <% } %>
+            <% if (success) { %>
+                <div class="sufee-alert alert with-close alert-success alert-dismissible" role="alert">
+                    <span class="badge badge-pill badge-success">Success</span>
+                    <span style="text-align: center;"><%= typeof success !== 'undefined' ? success : '' %></span>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <meta http-equiv="refresh" content="2;URL='/kamar'" />
+            <% } %>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="nama_asrama-input" class=" form-control-label">Nomor Kamar</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    <input type="text" id="nama_kamar" value="<%= typeof nama_kamar != 'undefined' ? nama_kamar : '' %>" name="nama_kamar" placeholder="Nama kamar.." class="form-control" required="required">
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="jumlah_lantai-input" class=" form-control-label">Kapasitas</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    <input type="number" id="kapasitas" value="<%= typeof kapasitas != 'undefined' ? kapasitas : '' %>" name="kapasitas" placeholder="Kapasitas.." class="form-control" required>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="disabled-input" class=" form-control-label">Posisi Kamar Lantai</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    <select name="id_lantai" class="form-control selectpicker" data-live-search="true">
+                        <option value="">Lantai</option>
+                    <% for(let i = 0; i < lantai.length; i++) { %>
+                        <option value="<%= lantai[i].id %>" <% if (lantai[i].id == id_lantai) { %> selected <% } %> data-tokens="<%= lantai[i].id %>"><%= lantai[i].lantai %></option>
+                    <% } %>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="disabled-input" class=" form-control-label">Asrama</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    <select name="id_asrama" class="form-control selectpicker" data-live-search="true">
+                        <option value="">Pilih Asrama</option>
+                    <% for(let i = 0; i < asrama.length; i++) { %>
+                        <option value="<%= asrama[i].id %>" <% if (asrama[i].id == id_asrama) { %> selected <% } %> data-tokens="<%= asrama[i].id %>"><%= asrama[i].nama_asrama %></option>
+                    <% } %>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="select" class=" form-control-label">Gambar</label>
+                </div>
+                <div class="col col-md-3">
+                    <input type="file" name="gambar" onchange="readURL(this)" value="<%= typeof originalname != 'undefined' ? originalname : '' %>" id="gambar" accept="image/jpeg, image/jpg, image/png">
+                </div>
+                <div class="col col-md-4">
+                    <div class="preview-images">
+                        <img id="previewImg">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col col-md-3">
+                    <input type="hidden" name="browser" id="browser" value="">
+                    <input type="hidden" name="browser_version" id="browser_version" value="">
+                    <input type="hidden" name="os" id="os" value="">
+                </div>
+                <div class="col col-md-7">
+                    <a href="/kamar" class="btn btn-outline-success"><i class="fa fa-angle-left"></i> Kembali</a>
+                    <button type="submit" class="btn btn-outline-primary openActionAddKamar"><i class="fa fa-save"></i> Simpan</button>
+                    <button type="reset" class="btn btn-outline-danger"><i class="fa fa-ban"></i> Reset</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

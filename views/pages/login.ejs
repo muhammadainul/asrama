@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login | Sistem Informasi Manajemen Asrama Badiklat Kejaksaan RI </title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="../images/logo-kejaksaaan.png"/>
+	<link rel="stylesheet" type="text/css" href="/admin/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/admin/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/core.css">
+	<link rel="stylesheet" href="/css/components.css">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/blue.css">
+	<link rel="stylesheet" href="/css/colors.css">
+	<style>
+		body{
+			background-color:#f5f5f5;
+			background-image: url("/images/background_20201125034709.png");
+			background-repeat: no-repeat;
+			background-size:cover;
+				}
+				.login-container .page-container .content .login-form {
+			max-width:500px;
+			width:unset;
+			margin-top:100px;
+			border-radius:unset;
+			border:1px solid #a0c9ea;
+			padding: 4px;
+			background: transparent;
+		}
+		.form-group {
+			height: 70px;
+		}
+		.input-group {
+			height: 40px;
+		}
+		.logo-login img {
+			border: 6px solid#654321 ;
+			border-radius: 100px;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			position:absolute;
+			top:0px;
+		}
+		.login-form .input-login {
+			border:1px solid #bbddf8;
+			padding: 22px 0px;
+		}
+		.login-form .input-login:focus {
+			border: 1px solid #1e88e5;
+		}
+		.panel-body.login-form .panel-border{
+			padding: 40px 80px 40px 80px;
+		}
+		.panel-body.login-form .btnlogin {
+			background-color:#654321  !important;
+		}
+		.form-control-feedback {
+			height: 40px !important;
+			line-height: 45px !important;
+		}
+		@media only screen and (max-width: 600px) {
+		  .panel-body.login-form .panel-border{
+				padding-left:40px;
+				padding-right:40px;
+			}
+		}
+		h5.content-group {
+			margin-top:60px;
+			font-weight:bold;
+			font-size: 35px;
+		}
+		#effect7{
+			position:relative;
+			/*-webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+			-moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+			box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;*/
+			-webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+			-moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+			box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
+			background-image: url("/images/bg-login-panel.png");
+			background-repeat: repeat;
+			border-radius: 4px;
+			-moz-border-radius:4px;
+			-webkit-border-radius:4px;
+		}
+		.field-icon {
+			float: right;
+			margin-left: 90%;
+			margin-top: 10px;
+			position: absolute;
+			z-index: 5;
+		}
+	</style>
+</head>
+<body class="login-container">
+	<div class="page-container">
+		<div class="page-content">
+			<div class="content-wrapper">
+				<div class="content">
+					<form action="/login" method="post">
+						<div class="panel panel-body login-form">
+						<div class="panel-border" id="effect7">
+							<div class="text-center">
+								<div class="text-slate-300 logo-login"><img src="/images/logo20201125035312.png" alt="e-SIMRA" width="170"></div>
+									<h5 class="content-group">Asrama</h5>
+								</div>
+								<div class="col-lg-12">
+									<% if (errors) { %>
+										<div class="alert alert-danger alert-dismissible fade show" role="alert">
+											<span style="text-align: center;"><%= errors %></span>
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+									<% } %>
+								</div>
+							<div class="form-group mb-0">
+								<div class="input-group date">
+									<div class="input-group-addon">
+										<i class="fa fa-user"></i>
+									</div>
+									<input type="text" class="form-control" name="nip" placeholder="nip" required>
+								</div>
+							</div>
+
+							<div class="form-group mb-0">
+								<div class="input-group date">
+									<div class="input-group-addon">
+										<i class="fa fa-lock"></i>
+									</div>
+									<input type="password" id="password-field" class="form-control" name="password" placeholder="password" required>
+									<span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+								</div>
+							</div>
+
+							<div class="p-0">
+								<div class="form-group">
+									<input type="hidden" name="browser" id="browser" value="">
+									<input type="hidden" name="browser_version" id="browser_version" value="">
+									<input type="hidden" name="os" id="os" value="">
+									<button type="submit" name="btnlogin" class="btn btn-primary btn-block btnlogin actionLogin">Login <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></button>
+									<a class="btn btn-primary btn-block btnlogin actionLogin" href="/registrasi">Registrasi <i class="fa fa-edit" aria-hidden="true"></i></a>
+								</div>
+							</div>
+							<div class="text-center">
+								
+							</div>
+						</div>
+						</div>
+					</form>			
+				<div class="footer text-muted text-center">
+						Sistem Informasi Asrama Badiklat Kejaksaan RI | Copyright &copy; 2020 <strong>ASRAMA</strong>, All Rights Reserved.
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+<!-- <body>
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+				<div class="col-lg-12">
+					<% if (errors) { %>
+						<div class="alert alert-danger alert-dismissible fade show" role="alert">
+							<span style="text-align: center;"><%= errors %></span>
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+					<% } %>
+                </div>
+				<img src="../images/logo2.png" class="img-responsive mx-auto d-block">
+				<br>
+				<h3 class="text-center">eSima</h3>
+				<form class="login100-form validate-form flex-sb flex-w" method="post" action='/login'>
+					<p class="txt1 p-b-11">
+						NIP
+					</p>
+					<div class="wrap-input100 validate-input m-b-36" data-validate = "Username is required">
+						<input class="input100" type="text" placeholder="NIP.." id="nip" name="nip" >
+						<span class="focus-input100"></span>
+					</div>
+					<span class="txt1 p-b-11">
+						Password
+					</span>
+					<div class="wrap-input100 validate-input m-b-12" data-validate = "Password is required">
+						<span class="btn-show-pass">
+							<i class="fa fa-eye"></i>
+						</span>
+						<input class="input100" type="password" placeholder="Password.." id="password" name="password" >
+						<span class="focus-input100"></span>
+					</div>
+					
+					<div class="flex-sb-m w-full p-b-48">
+
+					</div>
+
+					<input type="hidden" name="browser" id="browser" value="">
+                    <input type="hidden" name="browser_version" id="browser_version" value="">
+					<input type="hidden" name="os" id="os" value="">
+					
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn mx-auto actionLogin">
+							Login
+						</button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+	<div id="dropDownSelect1"></div> -->
+
+	<script src="/admin/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="/admin/vendor/animsition/js/animsition.min.js"></script>
+	<script src="/admin/js/custom.js"></script>
+	<script src="/admin/vendor/bootstrap/js/popper.js"></script>
+	<script src="/admin/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/admin/vendor/select2/select2.min.js"></script>
+	<script src="/admin/vendor/daterangepicker/moment.min.js"></script>
+	<script src="/admin/vendor/daterangepicker/daterangepicker.js"></script>
+	<script src="/admin/vendor/countdowntime/countdowntime.js"></script>
+	<script src="/admin/js/main.js"></script>
+	<script>
+		$(".toggle-password").click(function() {
+			$(this).toggleClass("fa-eye fa-eye-slash");
+				var input = $($(this).attr("toggle"));
+				if (input.attr("type") == "password") {
+					input.attr("type", "text");
+				} else {
+					input.attr("type", "password");
+			}
+		});
+	</script>
+<!-- </body> -->
+</html>

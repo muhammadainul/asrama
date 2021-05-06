@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="/new/vendors/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/new/vendors/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/new/vendors/themify-icons/css/themify-icons.css">
+<link rel="stylesheet" href="/new/vendors/flag-icon-css/css/flag-icon.min.css">
+<link rel="stylesheet" href="/new/vendors/selectFX/css/cs-skin-elastic.css">
+<link rel="stylesheet" href="/new/vendors/jqvmap/dist/jqvmap.min.css">
+<link rel="stylesheet" href="/new/vendors/bootstrap/bootstrap-select.min.css">
+
+<style>
+    .modal {
+        margin-top: 10%;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col col-sm-12 col-md-12 col-lg-12">
+            <div class="modal fade none-border" id="modalVerified">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+            
+                        </div>
+                        <div class="modal-body">
+                            <div class="alert alert-success">
+                                <strong>Account has been verfied. Please login. </strong> <i class="fa fa-check-circle-o fa-lg" aria-hidden="true"></i></strong>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/new/vendors/jquery/dist/jquery.min.js"></script>
+<script src="/new/vendors/popper.js/dist/umd/popper.min.js"></script>
+<script src="/new/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script>
+    (function($) {
+        "use strict";
+        $(window).on('load', function() {
+            $('#modalVerified').modal('show')
+            setTimeout(function (){
+                window.location.href='/'
+            }, 3000)
+        });
+    })(jQuery);
+</script>
